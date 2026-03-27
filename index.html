@@ -36,7 +36,7 @@
             padding: 0.8rem 2rem;
             display: flex;
             align-items: center;
-            justify-content: center; /* Centers the links */
+            justify-content: center;
             box-shadow: 0 2px 15px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
@@ -47,23 +47,12 @@
         .nav-links { display: flex; gap: 2.5rem; }
         nav a { text-decoration: none; color: var(--byu-navy); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; }
 
-        /* Position the Google button in the top right */
         #google-login-wrapper {
             position: absolute;
             right: 2rem;
             top: 50%;
             transform: translateY(-50%);
         }
-
-        #success-banner {
-            position: fixed;
-            top: -60px; left: 0; width: 100%;
-            background-color: var(--success-green);
-            color: white; text-align: center; padding: 12px;
-            font-weight: 700; z-index: 3000;
-            transition: top 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        #success-banner.show { top: 0; }
 
         /* --- CONTENT STYLING --- */
         header {
@@ -73,6 +62,8 @@
             text-align: center;
             clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
         }
+
+        header h1 { font-size: 3.5rem; margin: 0; font-weight: 800; }
 
         .container { max-width: 1000px; margin: -10rem auto 4rem; padding: 0 1.5rem; }
 
@@ -84,7 +75,10 @@
             box-shadow: var(--shadow);
             margin-bottom: 2.5rem;
             border: 1px solid rgba(255, 255, 255, 0.4);
+            transition: transform 0.3s ease;
         }
+
+        .glass-card:hover { transform: translateY(-5px); }
 
         .photo-slot {
             width: 220px; height: 220px;
@@ -96,6 +90,9 @@
         .photo-slot img { width: 100%; height: 100%; object-fit: cover; }
 
         .profile-header { display: flex; align-items: center; gap: 3rem; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+
+        h2 { color: var(--byu-navy); border-left: 5px solid var(--royal-blue); padding-left: 15px; margin-top: 0; }
 
         .skill-pill {
             display: inline-block;
@@ -106,13 +103,36 @@
             font-weight: 700;
             cursor: pointer;
             margin: 0.3rem;
+            transition: 0.3s;
+            color: var(--byu-navy);
+            border: 1px solid rgba(255,255,255,0.5);
         }
 
+        .skill-pill:hover { background: var(--royal-blue); color: white; transform: scale(1.05); }
+
         #protected-content { display: none; margin-top: 2rem; border-top: 6px solid var(--success-green); }
+
+        /* --- MOBILE MEDIA QUERIES --- */
+        @media (max-width: 768px) {
+            nav { flex-direction: column; padding: 1rem; gap: 1rem; }
+            #google-login-wrapper { position: relative; right: auto; top: auto; transform: none; }
+            header h1 { font-size: 2.2rem; }
+            .container { margin-top: -7rem; }
+            .glass-card { padding: 1.5rem; }
+            .profile-header { flex-direction: column; text-align: center; }
+            .grid { grid-template-columns: 1fr; }
+        }
 
         /* Disintegrate Effect */
         .disintegrate { opacity: 0 !important; transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(0.2) !important; transition: all 1.2s; }
         #broken-message { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-weight: 800; font-size: 2rem; opacity: 0; z-index: 4000; text-align: center; pointer-events: none; }
+        #success-banner {
+            position: fixed; top: -60px; left: 0; width: 100%;
+            background-color: var(--success-green); color: white; 
+            text-align: center; padding: 12px; font-weight: 700; z-index: 3000;
+            transition: top 0.5s ease;
+        }
+        #success-banner.show { top: 0; }
     </style>
 </head>
 <body>
@@ -123,7 +143,7 @@
 <nav>
     <div class="nav-links">
         <a href="index.html">Home</a>
-        <a href="bryon_survey.html">Research & Survey Work</a>
+        <a href="bryon_survey.html">Research</a>
         <a href="reviews.html">Reviews</a> 
     </div>
 
@@ -135,7 +155,7 @@
              data-callback="handleCredentialResponse"
              data-auto_prompt="false">
         </div>
-        <div class="g_id_signin" data-type="standard" data-shape="pill" data-theme="outline" data-text="signin_with" data-size="medium"></div>
+        <div class="g_id_signin" data-type="standard" data-shape="pill" data-theme="outline" data-size="medium"></div>
     </div>
 </nav>
 
@@ -148,57 +168,66 @@
     <div class="glass-card">
         <div class="profile-header">
             <div class="photo-slot">
-                <img src="bryon_head.JPG" alt="Bryon">
+                <img src="bryon_head.JPG" alt="Bryon Chandler">
             </div>
             <div>
                 <h2>Professional Profile</h2>
-                <p>Consumer insights specialist at the <strong>BYU Marriott School of Business</strong>.</p>
+                <p>I am a data-driven marketer specializing in consumer insights at the <strong>BYU Marriott School of Business</strong>. I bridge the gap between complex datasets and actionable brand strategy.</p>
             </div>
         </div>
     </div>
 
-    <div class="glass-card">
-        <h2>Skills</h2>
-        <span class="skill-pill" onclick="disintegrate()">R Studio</span>
+    <div class="grid">
+        <div class="glass-card">
+            <h2>Education & Tools</h2>
+            <p><strong>Brigham Young University</strong><br>B.S. Marketing | Expected Apr 2026</p>
+            <div style="margin-top: 1rem;">
+                <span class="skill-pill">SQL</span>
+                <span class="skill-pill">Tableau</span>
+                <span class="skill-pill" id="r-pill" onclick="disintegrate()">R Studio</span>
+                <span class="skill-pill">Qualtrics</span>
+                <span class="skill-pill">Python</span>
+                <span class="skill-pill">Excel VBA</span>
+            </div>
+        </div>
+
+        <div class="glass-card">
+            <h2>Experience</h2>
+            <p><strong>Consultant</strong> | BYU Marketing Lab</p>
+            <p>Providing strategic consumer insights for national brands including <strong>Jet-Puffed</strong> and <strong>FatCats</strong> entertainment centers.</p>
+            <a href="bryon_survey.html" class="skill-pill" style="background: var(--royal-blue); color: white; text-decoration: none; display: inline-block; margin-top: 10px;">View Portfolio &rarr;</a>
+        </div>
     </div>
 
     <div id="protected-content" class="glass-card">
         <h2>Exclusive Insights Unlocked</h2>
-        <p>You are now logged in. You can access internal files below.</p>
-        <a href="reviews.html" class="skill-pill" style="background: var(--success-green); color: white; text-decoration: none;">View Reviews</a>
+        <p>Success! You have authenticated via Google. You now have access to performance reviews and project archives.</p>
+        <a href="reviews.html" class="skill-pill" style="background: var(--success-green); color: white; text-decoration: none;">Go to Reviews</a>
     </div>
 </div>
 
+<footer style="text-align: center; padding: 4rem 1rem; opacity: 0.7;">
+    <p>801.842.8035 | <a href="mailto:chandlerbry1@gmail.com" style="color: var(--royal-blue); font-weight: bold;">chandlerbry1@gmail.com</a></p>
+</footer>
+
 <script>
-    // 1. JWT Decoder
     function parseJwt(token) {
         var base64Url = token.split('.')[1];
         var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
         return JSON.parse(window.atob(base64));
     }
 
-    // 2. Google Login Callback
     function handleCredentialResponse(response) {
         const payload = parseJwt(response.credential);
-        
-        // Success Feedback
         const banner = document.getElementById('success-banner');
         banner.innerText = "Hi, " + payload.given_name + "! Access Granted.";
         banner.classList.add('show');
-        
-        // Reveal the "Reviews" access card
         document.getElementById('protected-content').style.display = 'block';
-        
-        // Party time
+        document.getElementById('google-login-wrapper').style.opacity = '0';
         confetti({ particleCount: 150, spread: 70, origin: { y: 0.8 } });
-        
-        // Hide the login button since they are in
-        document.getElementById('google-login-wrapper').style.display = 'none';
-
         setTimeout(() => banner.classList.remove('show'), 4000);
     }
 
-    // 3. The Easter Egg
     function disintegrate() {
         const elements = document.querySelectorAll('nav, header, .glass-card');
         const msg = document.getElementById('broken-message');
