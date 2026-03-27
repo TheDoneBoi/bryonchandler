@@ -68,7 +68,7 @@
             transform: translate(-50%, -50%);
             font-size: 2.2rem;
             font-weight: 800;
-            color: #ffffff; /* UPDATED: Changed to white */
+            color: #ffffff; 
             opacity: 0;
             transition: opacity 0.5s ease;
             z-index: 5;
@@ -198,6 +198,8 @@
         .skill-pill:hover { transform: scale(1.1); background: var(--royal-blue); color: white; }
         #r-pill:hover { background: #276BBE; color: white; }
 
+        #protected-content { display: none; margin-top: 2rem; border-top: 5px solid var(--success-green); }
+
         footer { 
             text-align: center; 
             padding: 4rem 1rem; 
@@ -269,6 +271,12 @@
             <a href="bryon_survey.html" style="color: var(--royal-blue); font-weight: bold; text-decoration: none;">View Portfolio &rarr;</a>
         </div>
     </div>
+
+    <div id="protected-content" class="glass-card">
+        <h2>Exclusive Insights Unlocked</h2>
+        <p>Thanks for logging in! You can now access detailed performance reviews and internal project notes.</p>
+        <a href="reviews.html" class="skill-pill" style="background: var(--success-green); color: white; text-decoration: none;">Go to Reviews</a>
+    </div>
 </div>
 
 <footer id="footer">
@@ -277,6 +285,7 @@
 
 <script>
     window.onload = function() {
+        // Confetti on load
         confetti({ 
             particleCount: 150, 
             spread: 70, 
@@ -284,11 +293,13 @@
             colors: ['#002e5d', '#005dab', '#ffffff'] 
         });
 
+        // Initialize Google Identity Services
         google.accounts.id.initialize({
-            client_id: "YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com",
+            client_id: "870634620577-be9iv4epp6itcslaj8j647m1uofp77no.apps.googleusercontent.com",
             callback: handleCredentialResponse
         });
 
+        // Custom button trigger
         document.getElementById('google-login-btn').onclick = () => {
             google.accounts.id.prompt();
         };
@@ -296,8 +307,22 @@
 
     function handleCredentialResponse(response) {
         const responsePayload = parseJwt(response.credential);
+        
+        // Update the button with user info
         const btn = document.getElementById('google-login-btn');
         btn.innerHTML = `<img src="${responsePayload.picture}" alt="User"><span>Hi, ${responsePayload.given_name}</span>`;
+        
+        // Reveal protected content
+        document.getElementById('protected-content').style.display = 'block';
+        
+        // Success celebration
+        confetti({ particleCount: 150, spread: 100, origin: { y: 0.8 } });
+        
+        // Welcome banner
+        const banner = document.getElementById('success-banner');
+        banner.innerText = "Welcome back, " + responsePayload.given_name + "!";
+        banner.classList.add('show');
+        setTimeout(() => banner.classList.remove('show'), 3000);
     }
 
     function parseJwt(token) {
@@ -310,7 +335,7 @@
     }
 
     function disintegrate() {
-        const elements = document.querySelectorAll('nav, header, .glass-card, footer, .google-tab');
+        const elements = document.querySelectorAll('nav, header, .glass-card, footer');
         const message = document.getElementById('broken-message');
         const banner = document.getElementById('success-banner');
         
@@ -326,15 +351,12 @@
 
         document.body.style.background = "#001a35"; 
         
-        // Phase 1: Show "You just broke it :("
         setTimeout(() => { message.style.opacity = "1"; }, 600);
 
-        // Phase 2: Switch to "Hold on..." (Happens after 2 seconds total)
         setTimeout(() => {
             message.innerHTML = 'Hold on, it might come back<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>';
-        }, 2000); // UPDATED: Changed from 1.5s to 2s
+        }, 2000);
 
-        // Phase 3: Restore everything
         setTimeout(() => {
             message.style.opacity = "0";
             elements.forEach(el => { el.classList.remove('disintegrate'); });
@@ -347,7 +369,7 @@
 
             setTimeout(() => { message.innerHTML = "You just broke it :("; }, 500);
             
-        }, 4500); // Restoration starts after "Hold on" displays for a bit
+        }, 4500);
     }
 </script>
 
