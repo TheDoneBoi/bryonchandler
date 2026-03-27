@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews & Testimonials | Bryon R. Chandler</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --byu-navy: #002e5d;
+            --royal-blue: #005dab;
+            --slate: #333333;
+            --light-bg: #e2e8f0;
+            --white: #ffffff;
+            --gold: #ffc107;
+            --shadow: 0 8px 32px 0 rgba(0, 46, 93, 0.15);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--slate);
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f3f5f7 0%, #e2e8f0 100%);
+            background-attachment: fixed;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+        }
+
+        nav a { 
+            text-decoration: none; 
+            color: var(--byu-navy); 
+            font-weight: 700; 
+            font-size: 0.8rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px; 
+            transition: color 0.3s; 
+        }
+        nav a:hover { color: var(--royal-blue); }
+
+        /* --- HEADER --- */
+        header {
+            background: linear-gradient(135deg, var(--byu-navy) 0%, var(--royal-blue) 100%);
+            color: var(--white);
+            padding: 4rem 1rem 8rem;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+        }
+
+        header h1 { margin: 0; font-size: 3rem; font-weight: 800; }
+
+        .container {
+            max-width: 900px;
+            margin: -5rem auto 4rem;
+            padding: 0 1.5rem;
+        }
+
+        /* --- GLASS REVIEW CARDS --- */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stars {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #444;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .reviewer-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            padding-top: 1rem;
+        }
+
+        .reviewer-name {
+            font-weight: 800;
+            color: var(--byu-navy);
+            margin: 0;
+        }
+
+        .reviewer-title {
+            font-size: 0.85rem;
+            color: var(--royal-blue);
+            margin: 0;
+            font-weight: 600;
+        }
+
+        footer {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="bryon_survey.html">Research & Survey Work</a>
+    <a href="reviews.html">Reviews</a>
+</nav>
+
+<header>
+    <h1>Reviews & Feedback</h1>
+    <p>Words from colleagues, mentors, and project partners</p>
+</header>
+
+<div class="container">
+    
+    <div class="glass-card">
+        <div class="stars">★★★★★</div>
+        <span class="quote">"Bryon has an incredible ability to take messy, quantitative data and turn it into a story that actually makes sense for a brand. His work on the Jet-Puffed project was top-tier."</span>
+        <div class="reviewer-info">
+            <div>
+                <p class="reviewer-name">BYU Marketing Lab Project Lead</p>
+                <p class="reviewer-title">Senior Consultant</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="glass-card">
+        <div class="stars">★★★★★</div>
+        <span class="quote">"Detail-oriented and highly adaptable. During his time at Caldera Engineering, Bryon handled technical web repositioning with the skill of a full-time strategist."</span>
+        <div class="reviewer-info">
+            <div>
+                <p class="reviewer-name">Engineering Director</p>
+                <p class="reviewer-title">Caldera Engineering</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="glass-card">
+        <div class="stars">★★★★★</div>
+        <span class="quote">"A natural leader in the classroom and in the field. Bryon’s 1st place finish in the Bloom Sales Competition proved his ability to communicate value under pressure."</span>
+        <div class="reviewer-info">
+            <div>
+                <p class="reviewer-name">Marketing Department Faculty</p>
+                <p class="reviewer-title">Brigham Young University</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="glass-card">
+        <div class="stars">★★★★★</div>
+        <span class="quote">"His work mapping the B2B journey for FatCats provided us with the exact insights we needed to refine our digital touchpoints and increase conversion."</span>
+        <div class="reviewer-info">
+            <div>
+                <p class="reviewer-name">Corporate Strategy Partner</p>
+                <p class="reviewer-title">FatCats Strategic Project</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>Bryon R. Chandler | 2026 Marketing Portfolio</p>
+    <p><a href="mailto:chandlerbry1@gmail.com" style="color: var(--royal-blue); font-weight: bold; text-decoration: none;">Submit a Review</a></p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research & Survey Work | Bryon R. Chandler</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --byu-navy: #002e5d;
+            --royal-blue: #005dab;
+            --slate: #333333;
+            --light-bg: #e2e8f0;
+            --white: #ffffff;
+            --shadow: 0 8px 32px 0 rgba(0, 46, 93, 0.15);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--slate);
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f3f5f7 0%, #e2e8f0 100%);
+            background-attachment: fixed;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+        }
+
+        nav a { 
+            text-decoration: none; 
+            color: var(--byu-navy); 
+            font-weight: 700; 
+            font-size: 0.8rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px; 
+            transition: color 0.3s; 
+        }
+        nav a:hover { color: var(--royal-blue); }
+
+        /* --- HEADER --- */
+        header {
+            background: linear-gradient(135deg, var(--byu-navy) 0%, var(--royal-blue) 100%);
+            color: var(--white);
+            padding: 4rem 1rem 8rem;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+        }
+
+        header h1 { margin: 0; font-size: 3rem; font-weight: 800; }
+        header p { opacity: 0.9; font-size: 1.1rem; }
+
+        .container {
+            max-width: 900px;
+            margin: -5rem auto 4rem;
+            padding: 0 1.5rem;
+        }
+
+        /* --- GLASS CARDS --- */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 45px rgba(0, 46, 93, 0.25);
+        }
+
+        h2 { color: var(--byu-navy); font-size: 1.6rem; margin-top: 0; border-left: 5px solid var(--royal-blue); padding-left: 15px; }
+        h3 { color: var(--royal-blue); margin-top: 1.5rem; font-size: 1.1rem; }
+
+        .methodology-tag {
+            display: inline-block;
+            background: rgba(0, 93, 171, 0.1);
+            color: var(--royal-blue);
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-right: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .stat-value { display: block; font-size: 1.8rem; font-weight: 800; color: var(--byu-navy); }
+        .stat-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--slate); }
+
+        footer {
+            text-align: center;
+            padding: 4rem 1rem;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        @media (max-width: 600px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            header h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="bryon_survey.html">Research & Survey Work</a>
+    <a href="reviews.html">Reviews</a>
+</nav>
+
+<header>
+    <h1>Research & Surveys</h1>
+    <p>Translating Consumer Voices into Data-Driven Strategy</p>
+</header>
+
+<div class="container">
+    
+    <div class="glass-card">
+        <span class="methodology-tag">Quantitative</span>
+        <span class="methodology-tag">Circana (IRI)</span>
+        <span class="methodology-tag">Qualtrics</span>
+        
+        <h2>Jet-Puffed Marshmallows</h2>
+        <p>Innovation strategy project focused on identifying whitespace opportunities in the marshmallow category through a mix of macro-retail data and primary sentiment analysis.</p>
+        
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-value">300+</span>
+                <span class="stat-label">Survey Responses</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value">10+</span>
+                <span class="stat-label">B2C Interviews</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value">IRI</span>
+                <span class="stat-label">Data Integration</span>
+            </div>
+        </div>
+
+        <h3>Key Insights:</h3>
+        <ul>
+            <li>Mapped category trends using <strong>Circana Unify+</strong> to highlight seasonal purchase triggers.</li>
+            <li>Analyzed survey logic in <strong>Qualtrics</strong> to segment occasional vs. loyal users.</li>
+            <li>Delivered three actionable product innovation concepts based on consumer "pain points" identified in 1-on-1 interviews.</li>
+        </ul>
+    </div>
+
+    <div class="glass-card">
+        <span class="methodology-tag">Qualitative</span>
+        <span class="methodology-tag">Journey Mapping</span>
+        <span class="methodology-tag">B2B Strategy</span>
+
+        <h2>FatCats Fun Centers</h2>
+        <p>A multi-state customer journey mapping project aimed at reducing friction in the B2B sales funnel and increasing corporate retention.</p>
+
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-value">25+</span>
+                <span class="stat-label">Stakeholder Interviews</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value">3</span>
+                <span class="stat-label">US States Covered</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value">5+</span>
+                <span class="stat-label">Touchpoints Improved</span>
+            </div>
+        </div>
+
+        <h3>Strategic Outcomes:</h3>
+        <ul>
+            <li>Identified 4 major friction points in the digital booking process through deep-dive stakeholder interviews.</li>
+            <li>
