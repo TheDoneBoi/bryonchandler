@@ -14,7 +14,6 @@
             --byu-navy: #002e5d;
             --royal-blue: #005dab;
             --slate: #333333;
-            --light-bg: #e2e8f0; 
             --white: #ffffff;
             --success-green: #28a745;
             --shadow: 0 8px 32px 0 rgba(0, 46, 93, 0.15);
@@ -24,73 +23,20 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--slate);
             margin: 0;
-            padding: 0;
             background: linear-gradient(135deg, #f3f5f7 0%, #e2e8f0 100%);
             background-attachment: fixed;
-            transition: background-color 0.8s ease;
             overflow-x: hidden;
         }
 
-        #success-banner {
-            position: fixed;
-            top: -60px; 
-            left: 0;
-            width: 100%;
-            background-color: var(--success-green);
-            color: white;
-            text-align: center;
-            padding: 12px;
-            font-weight: 700;
-            z-index: 3000;
-            transition: top 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-
-        #success-banner.show { top: 0; }
-
-        .disintegrate {
-            opacity: 0 !important;
-            transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(0.2) !important;
-            pointer-events: none;
-        }
-
-        nav, header, .glass-card, footer {
-            transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        #broken-message {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: #ffffff; 
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            z-index: 5;
-            text-align: center;
-            pointer-events: none;
-            width: 90%;
-        }
-
-        .dot { opacity: 0; animation: blink 1.4s infinite both; }
-        .dot:nth-child(2) { animation-delay: 0.2s; }
-        .dot:nth-child(3) { animation-delay: 0.4s; }
-
-        @keyframes blink { 0% { opacity: 0.2; } 20% { opacity: 1; } 100% { opacity: 0.2; } }
-
+        /* --- NAVIGATION --- */
         nav {
             background-color: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
             padding: 0.8rem 2rem;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center; /* Centers the links */
             box-shadow: 0 2px 15px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
@@ -98,278 +44,173 @@
             border-bottom: 1px solid rgba(255,255,255,0.3);
         }
 
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            flex-grow: 1;
-            justify-content: center;
-            margin-left: 140px; 
+        .nav-links { display: flex; gap: 2.5rem; }
+        nav a { text-decoration: none; color: var(--byu-navy); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; }
+
+        /* Position the Google button in the top right */
+        #google-login-wrapper {
+            position: absolute;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
-        nav a { text-decoration: none; color: var(--byu-navy); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; transition: color 0.3s; }
-        nav a:hover { color: var(--royal-blue); }
-
-        .google-tab {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: white;
-            border: 1px solid #ddd;
-            padding: 6px 12px;
-            border-radius: 4px;
-            text-decoration: none;
-            color: #555;
-            font-size: 13px;
-            font-weight: 600;
-            transition: all 0.2s ease;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            cursor: pointer;
+        #success-banner {
+            position: fixed;
+            top: -60px; left: 0; width: 100%;
+            background-color: var(--success-green);
+            color: white; text-align: center; padding: 12px;
+            font-weight: 700; z-index: 3000;
+            transition: top 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
+        #success-banner.show { top: 0; }
 
-        .google-tab:hover { background: #f8f8f8; box-shadow: 0 2px 5px rgba(0,0,0,0.15); }
-        .google-tab img { width: 16px; height: 16px; border-radius: 50%; }
-
+        /* --- CONTENT STYLING --- */
         header {
             background: linear-gradient(135deg, var(--byu-navy) 0%, var(--royal-blue) 100%);
             color: var(--white);
             padding: 7rem 1rem 14rem;
             text-align: center;
             clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
-            position: relative;
-            z-index: 1;
         }
 
-        header h1 { margin: 0; font-size: 3.5rem; font-weight: 800; text-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-
-        .container {
-            max-width: 1000px;
-            margin: -10rem auto 4rem;
-            padding: 0 1.5rem;
-            position: relative;
-            z-index: 10;
-        }
+        .container { max-width: 1000px; margin: -10rem auto 4rem; padding: 0 1.5rem; }
 
         .glass-card {
             background: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
             border-radius: 20px;
             padding: 3rem;
             box-shadow: var(--shadow);
             margin-bottom: 2.5rem;
             border: 1px solid rgba(255, 255, 255, 0.4);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
-        .glass-card:hover { transform: translateY(-5px); box-shadow: 0 15px 45px rgba(0, 46, 93, 0.25); background: rgba(255, 255, 255, 0.85); }
-
-        .profile-header { display: flex; align-items: center; gap: 3rem; }
 
         .photo-slot {
             width: 220px; height: 220px;
-            background: #eee;
             border-radius: 50%;
             overflow: hidden;
-            flex-shrink: 0;
             border: 8px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            flex-shrink: 0;
         }
+        .photo-slot img { width: 100%; height: 100%; object-fit: cover; }
 
-        .photo-slot img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
-
-        h2 { color: var(--byu-navy); font-size: 1.6rem; margin-top: 0; border-left: 5px solid var(--royal-blue); padding-left: 15px; }
-
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .profile-header { display: flex; align-items: center; gap: 3rem; }
 
         .skill-pill {
             display: inline-block;
             background: rgba(0, 46, 93, 0.08);
-            color: var(--byu-navy);
             padding: 0.5rem 1rem;
             border-radius: 30px;
             font-size: 0.85rem;
             font-weight: 700;
-            margin: 0.3rem;
             cursor: pointer;
-            transition: all 0.2s ease;
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            margin: 0.3rem;
         }
 
-        .skill-pill:hover { transform: scale(1.1); background: var(--royal-blue); color: white; }
-        #r-pill:hover { background: #276BBE; color: white; }
+        #protected-content { display: none; margin-top: 2rem; border-top: 6px solid var(--success-green); }
 
-        #protected-content { display: none; margin-top: 2rem; border-top: 5px solid var(--success-green); }
-
-        footer { 
-            text-align: center; 
-            padding: 4rem 1rem; 
-            background: rgba(255, 255, 255, 0.5); 
-            backdrop-filter: blur(5px);
-            border-top: 1px solid rgba(255, 255, 255, 0.3); 
-        }
-
-        @media (max-width: 768px) {
-            .profile-header { flex-direction: column; text-align: center; }
-            .grid { grid-template-columns: 1fr; }
-            .container { margin-top: -6rem; }
-            nav { flex-direction: column; gap: 1rem; padding: 1.5rem; }
-            .nav-links { margin-left: 0; }
-        }
+        /* Disintegrate Effect */
+        .disintegrate { opacity: 0 !important; transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(0.2) !important; transition: all 1.2s; }
+        #broken-message { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-weight: 800; font-size: 2rem; opacity: 0; z-index: 4000; text-align: center; pointer-events: none; }
     </style>
 </head>
 <body>
 
-<div id="success-banner">Look all better!</div>
+<div id="success-banner">Welcome back!</div>
 <div id="broken-message">You just broke it :(</div>
 
-<nav id="nav">
+<nav>
     <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="bryon_survey.html">Research & Survey Work</a>
         <a href="reviews.html">Reviews</a> 
     </div>
-    <div id="google-login-btn" class="google-tab">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_Color_Icon.svg" alt="Google">
-        <span>Log in with Google</span>
+
+    <div id="google-login-wrapper">
+        <div id="g_id_onload"
+             data-client_id="870634620577-be9iv4epp6itcslaj8j647m1uofp77no.apps.googleusercontent.com"
+             data-context="signin"
+             data-ux_mode="popup"
+             data-callback="handleCredentialResponse"
+             data-auto_prompt="false">
+        </div>
+        <div class="g_id_signin" data-type="standard" data-shape="pill" data-theme="outline" data-text="signin_with" data-size="medium"></div>
     </div>
 </nav>
 
-<header id="header">
+<header>
     <h1>BRYON R. CHANDLER</h1>
     <p>Marketing Strategist | Data Analyst | Insights Specialist</p>
 </header>
 
-<div class="container" id="main-container">
+<div class="container">
     <div class="glass-card">
         <div class="profile-header">
             <div class="photo-slot">
-                <img src="bryon_head.JPG" alt="Bryon Chandler">
+                <img src="bryon_head.JPG" alt="Bryon">
             </div>
             <div>
                 <h2>Professional Profile</h2>
-                <p>I am a data-driven marketer specializing in consumer insights at the <strong>BYU Marriott School of Business</strong>. I bridge the gap between complex datasets and actionable brand strategy.</p>
+                <p>Consumer insights specialist at the <strong>BYU Marriott School of Business</strong>.</p>
             </div>
         </div>
     </div>
 
-    <div class="grid">
-        <div class="glass-card">
-            <h2>Education & Tools</h2>
-            <p><strong>Brigham Young University</strong><br>B.S. Marketing | Expected Apr 2026</p>
-            <div style="margin-top: 1rem;">
-                <span class="skill-pill">SQL</span>
-                <span class="skill-pill">Tableau</span>
-                <span class="skill-pill" id="r-pill" onclick="disintegrate()">R Studio</span>
-                <span class="skill-pill">Qualtrics</span>
-            </div>
-        </div>
-
-        <div class="glass-card">
-            <h2>Experience</h2>
-            <p><strong>Consultant</strong> | BYU Marketing Lab</p>
-            <p>Strategic insights for <strong>Jet-Puffed</strong> and <strong>FatCats</strong>.</p>
-            <a href="bryon_survey.html" style="color: var(--royal-blue); font-weight: bold; text-decoration: none;">View Portfolio &rarr;</a>
-        </div>
+    <div class="glass-card">
+        <h2>Skills</h2>
+        <span class="skill-pill" onclick="disintegrate()">R Studio</span>
     </div>
 
     <div id="protected-content" class="glass-card">
         <h2>Exclusive Insights Unlocked</h2>
-        <p>Thanks for logging in! You can now access detailed performance reviews and internal project notes.</p>
-        <a href="reviews.html" class="skill-pill" style="background: var(--success-green); color: white; text-decoration: none;">Go to Reviews</a>
+        <p>You are now logged in. You can access internal files below.</p>
+        <a href="reviews.html" class="skill-pill" style="background: var(--success-green); color: white; text-decoration: none;">View Reviews</a>
     </div>
 </div>
 
-<footer id="footer">
-    <p>801.842.8035 | <a href="mailto:chandlerbry1@gmail.com" style="color: var(--royal-blue); font-weight: bold;">chandlerbry1@gmail.com</a></p>
-</footer>
-
 <script>
-    window.onload = function() {
-        // Confetti on load
-        confetti({ 
-            particleCount: 150, 
-            spread: 70, 
-            origin: { y: 0.6 }, 
-            colors: ['#002e5d', '#005dab', '#ffffff'] 
-        });
-
-        // Initialize Google Identity Services
-        google.accounts.id.initialize({
-            client_id: "870634620577-be9iv4epp6itcslaj8j647m1uofp77no.apps.googleusercontent.com",
-            callback: handleCredentialResponse
-        });
-
-        // Custom button trigger
-        document.getElementById('google-login-btn').onclick = () => {
-            google.accounts.id.prompt();
-        };
-    };
-
-    function handleCredentialResponse(response) {
-        const responsePayload = parseJwt(response.credential);
-        
-        // Update the button with user info
-        const btn = document.getElementById('google-login-btn');
-        btn.innerHTML = `<img src="${responsePayload.picture}" alt="User"><span>Hi, ${responsePayload.given_name}</span>`;
-        
-        // Reveal protected content
-        document.getElementById('protected-content').style.display = 'block';
-        
-        // Success celebration
-        confetti({ particleCount: 150, spread: 100, origin: { y: 0.8 } });
-        
-        // Welcome banner
-        const banner = document.getElementById('success-banner');
-        banner.innerText = "Welcome back, " + responsePayload.given_name + "!";
-        banner.classList.add('show');
-        setTimeout(() => banner.classList.remove('show'), 3000);
-    }
-
+    // 1. JWT Decoder
     function parseJwt(token) {
         var base64Url = token.split('.')[1];
         var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-        var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
-            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-        }).join(''));
-        return JSON.parse(jsonPayload);
+        return JSON.parse(window.atob(base64));
     }
 
-    function disintegrate() {
-        const elements = document.querySelectorAll('nav, header, .glass-card, footer');
-        const message = document.getElementById('broken-message');
-        const banner = document.getElementById('success-banner');
+    // 2. Google Login Callback
+    function handleCredentialResponse(response) {
+        const payload = parseJwt(response.credential);
         
+        // Success Feedback
+        const banner = document.getElementById('success-banner');
+        banner.innerText = "Hi, " + payload.given_name + "! Access Granted.";
+        banner.classList.add('show');
+        
+        // Reveal the "Reviews" access card
+        document.getElementById('protected-content').style.display = 'block';
+        
+        // Party time
+        confetti({ particleCount: 150, spread: 70, origin: { y: 0.8 } });
+        
+        // Hide the login button since they are in
+        document.getElementById('google-login-wrapper').style.display = 'none';
+
+        setTimeout(() => banner.classList.remove('show'), 4000);
+    }
+
+    // 3. The Easter Egg
+    function disintegrate() {
+        const elements = document.querySelectorAll('nav, header, .glass-card');
+        const msg = document.getElementById('broken-message');
         elements.forEach(el => {
-            const randomX = (Math.random() - 0.5) * 2500 + 'px';
-            const randomY = (Math.random() - 0.5) * 2500 + 'px';
-            const randomRot = (Math.random() - 0.5) * 1080 + 'deg';
-            el.style.setProperty('--x', randomX);
-            el.style.setProperty('--y', randomY);
-            el.style.setProperty('--r', randomRot);
+            el.style.setProperty('--x', (Math.random() - 0.5) * 2000 + 'px');
+            el.style.setProperty('--y', (Math.random() - 0.5) * 2000 + 'px');
+            el.style.setProperty('--r', (Math.random() - 0.5) * 1000 + 'deg');
             el.classList.add('disintegrate');
         });
-
-        document.body.style.background = "#001a35"; 
-        
-        setTimeout(() => { message.style.opacity = "1"; }, 600);
-
-        setTimeout(() => {
-            message.innerHTML = 'Hold on, it might come back<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>';
-        }, 2000);
-
-        setTimeout(() => {
-            message.style.opacity = "0";
-            elements.forEach(el => { el.classList.remove('disintegrate'); });
-            document.body.style.background = "linear-gradient(135deg, #f3f5f7 0%, #e2e8f0 100%)";
-            
-            setTimeout(() => {
-                banner.classList.add('show');
-                setTimeout(() => { banner.classList.remove('show'); }, 3000);
-            }, 1000);
-
-            setTimeout(() => { message.innerHTML = "You just broke it :("; }, 500);
-            
-        }, 4500);
+        document.body.style.background = "#001a35";
+        setTimeout(() => msg.style.opacity = "1", 600);
+        setTimeout(() => location.reload(), 4500);
     }
 </script>
 
